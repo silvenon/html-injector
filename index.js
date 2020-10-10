@@ -275,4 +275,3 @@ module.exports.hooks = {
  * @type {string}
  */
 module.exports["plugin:name"] = config.PLUGIN_NAME;
-
