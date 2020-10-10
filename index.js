@@ -187,7 +187,7 @@ module.exports["plugin"] = function (opts, bs) {
 
         debug('Responding to file change event', data.namespace);
 
-        requestNew(opts);
+        requestNew(opts, data);
     }
 
     function pluginEvent () {
@@ -214,7 +214,7 @@ module.exports["plugin"] = function (opts, bs) {
      * @param {String} url
      * @param {Object} opts - plugin options
      */
-    function requestNew (opts) {
+    function requestNew (opts, data) {
 
         // Remove any
         var sockets = bs.io.of(bs.options.getIn(["socket", "namespace"])).sockets;
@@ -229,6 +229,13 @@ module.exports["plugin"] = function (opts, bs) {
             if (valid.indexOf(url) === -1) {
                 delete htmlInjector.cache[url];
                 return;
+            }
+
+            if (data) {
+                var baseDir = Array.from(bs.options.get('server').get('baseDir'))[0];
+                var currentPath = urlParser.parse(url).pathname.replace('index.html', '');
+                var changedPath = data.path.replace('index.html', '').slice(baseDir.length);
+                if (changedPath !== currentPath) return;
             }
 
             debug("requesting %s", url);
