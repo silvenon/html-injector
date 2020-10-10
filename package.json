@@ -1,6 +1,6 @@
 {
   "name": "@silvenon/bs-html-injector",
-  "version": "3.0.3",
+  "version": "3.0.4",
   "description": "Inject only HTML that has changed.",
   "main": "index.js",
   "publishConfig": {
