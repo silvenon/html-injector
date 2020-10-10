@@ -1,8 +1,12 @@
 {
-  "name": "bs-html-injector",
+  "name": "@silvenon/bs-html-injector",
   "version": "3.0.3",
   "description": "Inject only HTML that has changed.",
   "main": "index.js",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
   "repository": {
     "type": "git",
     "url": "git://github.com/shakyshane/html-injector.git"
